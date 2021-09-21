@@ -50,6 +50,11 @@ class Product
      */
     private $productOrders;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Image::class, mappedBy="product")
+     */
+    private $image;
+
 
 
     public function __construct()
@@ -155,4 +160,21 @@ class Product
     }
 
 	
+	/**
+	 * 
+	 * @return mixed
+	 */
+	function getImage() {
+		return $this->image;
+	}
+	
+	/**
+	 * 
+	 * @param mixed $image 
+	 * @return Product
+	 */
+	function setImage($image): self {
+		$this->image = $image;
+		return $this;
+	}
 }
