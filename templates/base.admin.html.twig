@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenue sur l'administration du site{% endblock %}
+{% block stylesheets %}
+{{parent()}}
+<link rel="stylesheet" href="{{asset('css/datatable.css')}}">
+<link rel="stylesheet" href="{{asset('css/style.admin.css')}}">
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+<script src="{{asset('js/jquery3.6.js')}}"></script>
+<script src="{{asset('js/datatable.js')}}"></script>
+<script src="{{asset('js/initDatabase.js')}}"></script>
+{% endblock %}
