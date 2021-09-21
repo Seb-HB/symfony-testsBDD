@@ -55,11 +55,17 @@ class Product
      */
     private $image;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="product")
+     */
+    private $tags;
+
 
 
     public function __construct()
     {
         $this->productOrders = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
 
