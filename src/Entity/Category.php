@@ -5,9 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoryRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
 class Category
 {
@@ -20,6 +23,8 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255, nullable="false")
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      */
     private $libelle;
 
@@ -40,8 +45,8 @@ class Category
 	 * @return mixed
 	 */
 	function getId() {
-                        		return $this->id;
-                        	}
+        return $this->id;
+    }
 	
 	/**
 	 * 
@@ -49,17 +54,17 @@ class Category
 	 * @return Category
 	 */
 	function setId($id): self {
-                        		$this->id = $id;
-                        		return $this;
-                        	}
+        $this->id = $id;
+        return $this;
+    }
 
 	/**
 	 * 
 	 * @return mixed
 	 */
 	function getLibelle() {
-                        		return $this->libelle;
-                        	}
+        return $this->libelle;
+    }
 	
 	/**
 	 * 
@@ -67,9 +72,9 @@ class Category
 	 * @return Category
 	 */
 	function setLibelle($libelle): self {
-                        		$this->libelle = $libelle;
-                        		return $this;
-                        	}
+        $this->libelle = $libelle;
+        return $this;
+    }
 
     /**
      * @return Collection|Product[]

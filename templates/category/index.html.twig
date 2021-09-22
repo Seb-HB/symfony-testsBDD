@@ -2,19 +2,27 @@
 
 {% block title %}Hello CategoryController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block main %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div >
+    <h1>Liste des catégories</h1>
+    <a href="{{ path('category_add') }}" >Ajouter une catégorie</a>
+    <table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/DWWM/Exercices/symfony/testBDD/src/Controller/CategoryController.php'|file_link(0) }}">src/Controller/CategoryController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/DWWM/Exercices/symfony/testBDD/templates/category/index.html.twig'|file_link(0) }}">templates/category/index.html.twig</a></code></li>
-    </ul>
+
+        {% for categ in categories %}
+        <tr>
+            <td>
+                <p>{{ categ.libelle }}<p>
+            </td>
+            <td>
+                <a href="{{ path('category_edit', {category: categ.id} ) }}">Editer cette Catégorie</a>
+            </td>
+            <td>
+                <a href="{{ path('category_delete', {category: categ.id}) }}" >Supprimer cette Catégorie</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}
